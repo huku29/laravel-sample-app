@@ -20,6 +20,25 @@ class BoardsTableSeeder extends Seeder
                 'updated_at'=>now(),
               ],
 
+              [
+                'title'=>'bbb',
+                'body'=>'bbbbbbb',
+                'created_at'=>now(),
+                'updated_at'=>now(),
+              ],
+
+              [
+                'title'=>'bbb',
+                'body'=>'bbbbbbb',
+                'created_at'=>now(),
+                'updated_at'=>now(),
+              ],
+              [
+                'title'=>'bbb',
+                'body'=>'bbbbbbb',
+                'created_at'=>now(),
+                'updated_at'=>now(),
+              ],
               ]
         );
     }

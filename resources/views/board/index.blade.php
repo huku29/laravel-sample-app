@@ -4,6 +4,17 @@
 @section('content')
 <h1>投稿一覧</h1>
 
+<form method="GET" action="{{route('board.search')}}">
+  @csrf
+  <div>
+    <label for="form-search">検索</label>
+    <input type="search" name="search" id="form-search">
+  </div>
+
+  <button type="submit">検索</button>
+
+</form>
+
 <table>
 <tr>
 <th></th>  
