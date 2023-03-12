@@ -113,4 +113,23 @@ class BoardController extends Controller
         $board->delete();
         return redirect('board/index');
     }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $query=DB::table('boards');
+        $spaceConversion = mb_convert_kana($search, 's');
+        $keyword_array=preg_split('/[\s]+/', $spaceConversion , -1, PREG_SPLIT_NO_EMPTY);
+
+        foreach ($keyword_array as $keyword) {
+            $query->where('title', 'like', '%'.$keyword.'%');
+            $query->orWhere('body', 'like', '%'.$keyword.'%');
+          }
+    
+        $query->select('id', 'title', 'body');
+        $boards=$query->paginate(20);
+
+        return view('board/index', compact('boards'));
+
+    }
 }

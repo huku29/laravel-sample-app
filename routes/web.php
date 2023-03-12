@@ -19,6 +19,7 @@ Route::group(['prefix'=>'board'], function () {
     Route::get('edit/{id}', 'BoardController@edit')->name('board.edit');
     Route::post('update/{id}', 'BoardController@update')->name('board.update');
     Route::post('destroy/{id}', 'BoardController@destroy')->name('board.destroy');
+    Route::get('search', 'BoardController@search')->name('board.search');
   });
 
 Route::get('/', function () {
