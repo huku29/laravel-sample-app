@@ -2,33 +2,34 @@
 
 
 @section('content')
-<h1>投稿一覧</h1>
+<h1 class="text-center">投稿一覧</h1>
 
-<form method="GET" action="{{route('board.search')}}">
-  @csrf
-  <div>
-    <label for="form-search">検索</label>
-    <input type="search" name="search" id="form-search">
-  </div>
+<div class="text-center my-4">
 
-  <button type="submit">検索</button>
+  <form method="GET" action="{{route('board.search')}}">
+    @csrf
+    <div>
+     
+      <input type="search" name="search" id="form-search">
+      <button type="submit">検索</button>
+    </div>
+  </form>
 
-</form>
-
-<table>
-<tr>
-<th></th>  
-<th>タイトル</th>
-<th>内容</th>
-</tr>
+  <div class="row my-4 row-cols-1 row-cols-md-3 gap-3">
 @foreach($boards as $board)
-<tr>
-<td>{{$board->id}}</td>
-<td>{{$board->title}}</td>
-<td>{{$board->body}}</td>
-<td><th><a href="{{route('board.show',['id'=>$board->id])}}">詳細</a></th></td>
-</tr>
+<div class="d-flex justify-content-around bd-highlight" >
+<div class="card h-100" style="width: 18rem; ">
+  <div class="card-body">
+    <h5 class="card-title">{{$board->title}}</h5>
+    <p class="card-text">{{$board->body}}</p>
+    <a href="{{route('board.show',['id'=>$board->id])}}">詳細</a>
+  </div>
+</div>
+</div>
 @endforeach
-</table>
-<a href="{{ route('board.create') }}">{{ __('新規作成') }}</a>
+</div>
+<div>
+  <a href="{{ route('board.create') }}">{{ __('新規作成') }}</a>
+</div>
+
 @endsection
