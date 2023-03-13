@@ -2,21 +2,24 @@
 
 
 @section('content')
-<h1>詳細表示</h1>
 
-<div>
-タイトル
+  <h1 class="text-center">詳細表示</h1>
+  <div class="text-center border col-7 mx-auto mt-5 py-5" >
+    <div class ="pt-3">
+<h5>タイトル</h5>
 {{$board->title}}
 </div>
-
-<div>
-内容
+<div class="pt-3">
+<h5>内容</h5>
 {{$board->body}}
 </div>
-<a href="{{route('board.edit',['id'=>$board->id])}}">{{ __('編集') }}</a>
 <form method="POST" action="{{route('board.destroy',['id'=>$board->id])}}">
   @csrf
-  <button type="submit">削除</button>
+  <button type="submit" class="mt-3">削除する</button>
 </form>
-<a href="{{ route('board.index') }}">{{ __('一覧に戻る') }}</a>
+<div class="mt-5 me-5">
+  <a href="{{route('board.edit',['id'=>$board->id])}}">{{ __('編集する') }}</a>
+  <a href="{{ route('board.index') }}">{{ __('一覧に戻る') }}</a>
+</div>
+</div>
 @endsection
